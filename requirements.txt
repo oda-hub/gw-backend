@@ -1,5 +1,5 @@
 nb2workflow[cwl,oda]
-gwpy
+gwpy==2.0.4
 werkzeug
 rdflib
 apscheduler
@@ -8,3 +8,4 @@ flask_caching
 flask_cors
 flasgger
 oda_api
+ligo.skymap
