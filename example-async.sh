@@ -45,6 +45,7 @@ while true; do
 done
 
 
+# useful to inspect notebooks, can be also retrieved in html
 echo -e "\033[33mexecuted jobs: $(curl http://127.0.0.1:9191/trace/list?json)\033[0m"
 
 cleanup
