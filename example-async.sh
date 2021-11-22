@@ -1,4 +1,4 @@
-nb2service spectrogram.ipynb &
+nb2service nb/spectrogram.ipynb &
 service_pid=$?
 
 function cleanup()
