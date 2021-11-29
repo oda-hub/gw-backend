@@ -1,3 +1,6 @@
+(
+    cd nb
+
 nb2service spectrogram.ipynb &
 service_pid=$?
 
@@ -54,3 +57,5 @@ done
 echo -e "\033[33mexecuted jobs: $(curl http://127.0.0.1:9191/trace/list?json)\033[0m"
 
 cleanup
+
+)
