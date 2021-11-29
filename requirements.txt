@@ -1,4 +1,6 @@
-nb2workflow[cwl,oda]
+#nb2workflow[cwl,oda]
+-e git+https://github.com/volodymyrss/nb2workflow.git@master#egg=nb2workflow[cwl,oda]
+
 gwpy==2.0.4
 werkzeug
 rdflib
