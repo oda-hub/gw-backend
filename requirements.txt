@@ -1,7 +1,7 @@
 #nb2workflow[cwl,oda]
--e git+https://github.com/volodymyrss/nb2workflow.git@master#egg=nb2workflow[cwl,oda]
+-e git+https://github.com/volodymyrss/nb2workflow.git@master#egg=nb2workflow[cwl,oda,service]
 
-gwpy==2.0.4
+gwpy
 werkzeug
 rdflib
 apscheduler
