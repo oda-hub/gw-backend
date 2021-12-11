@@ -1,4 +1,7 @@
-nb2service nb/spectrogram.ipynb &
+(
+    cd nb
+
+nb2service spectrogram.ipynb &
 service_pid=$?
 
 function cleanup()
@@ -26,8 +29,11 @@ get_path=$(curl -s http://127.0.0.1:9191/apispec_1.json | jq -r '.paths | keys[0
 # note that this asynchronous interaction does not involve callbacks. 
 # But I think dispatcher supports this directly (unless something broke since we did not use this kind of approach)
 # this loop should be done by the client, by dispatcher. In fact, it is frontend (or oda_api) that initiates the repeated request.
+
+callback_fn="/tmp/callback.json"
+
 while true; do
-    response=$(curl http://127.0.0.1:9191$get_path?_async_request=yes)
+    response=$(curl http://127.0.0.1:9191$get_path?_async_request=yes\&_async_request_callback=file://$callback_fn)
     state=$(echo $response | jq -r '.workflow_status')
     comment=$(echo $response | jq -r '.comment')
     echo -e "\033[31m$state\033[0m $comment"
@@ -44,8 +50,12 @@ while true; do
     sleep 1
 done
 
+< $callback_fn awk '{print ">>>", $0}'
+
 
 # useful to inspect notebooks, can be also retrieved in html
 echo -e "\033[33mexecuted jobs: $(curl http://127.0.0.1:9191/trace/list?json)\033[0m"
 
 cleanup
+
+)
