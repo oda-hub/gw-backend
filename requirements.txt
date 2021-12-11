@@ -1,4 +1,6 @@
-nb2workflow[cwl,oda]
+#nb2workflow[cwl,oda]
+-e git+https://github.com/volodymyrss/nb2workflow.git@master#egg=nb2workflow[cwl,oda,service]
+
 gwpy
 werkzeug
 rdflib
@@ -8,3 +10,4 @@ flask_caching
 flask_cors
 flasgger
 oda_api
+ligo.skymap
